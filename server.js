@@ -38,11 +38,11 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/contact', (req, res) => {
-    res.send(`Contact Us ${res}`)
+    res.send(`Contact Us`)
 })
 
 app.get('/shop', (req, res) => {
-    res.send(`Shop Tab, ${shop}`)
+    res.send(shop)
 })
 
 app.post('/shop', (req, res) => {
@@ -69,7 +69,7 @@ app.put('/shop/:shopId', (req, res) => {
     }
     if (!req.body.name) {
         return res.status(404).json({
-            error: "You item Was Empty..."
+            error: "Your item us empty, try again..."
         });
     }
 
@@ -82,7 +82,7 @@ app.put('/shop/:shopId', (req, res) => {
 
 app.delete('/shop/:shopId', (req, res) => {
 
-    const item = shop.find(f => f.id === parseInt(req.params.itemId));
+    const item = shop.find(f => f.id === parseInt(req.params.shopId));
 
     if (!item) res.status(404).json({
         error: "item Not Found..."
@@ -93,7 +93,7 @@ app.delete('/shop/:shopId', (req, res) => {
     shop.splice(itemIndex, 1);
 
 
-    res.send(friend);
+    res.send(item);
 
 
 });
